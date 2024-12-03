@@ -12,7 +12,7 @@ USERNAME = "consultants"
 PASSWORD = "WelcomeItc@2022"
 DB_NAME = "testdb"
 PORT = "5432"
-ENCODED_PASSWORD = quote_plus(PASSWORD)
+#ENCODED_PASSWORD = quote_plus(PASSWORD)
 
 #database_url = f'{DATABASE_TYPE}://{USERNAME}:{ENCODED_PASSWORD}@{PUBLIC_IP}:{PORT}/{DB_NAME}'
 # Create a SQLAlchemy engine
