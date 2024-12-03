@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, text
 # Initialize the Flask application
 app = Flask(__name__)
 
+DATABASE_TYPE= 'postgresql'
 
 PUBLIC_IP = "18.132.73.146"
 USERNAME = "consultants"
@@ -14,7 +15,9 @@ DB_NAME = "testdb"
 PORT = "5432"
 ENCODED_PASSWORD = quote_plus(PASSWORD)
 
-database_url = f"postgresql://{USERNAME}:{ENCODED_PASSWORD}@{PUBLIC_IP}:{PORT}/{DB_NAME}"
+database_url = f'{DATABASE_TYPE}://{USERNAME}:{ENCODED_PASSWORD}@{PUBLIC_IP}:{PORT}/{DB_NAME}'
+# Create a SQLAlchemy engine
+#engine = create_engine(f'{DATABASE_TYPE}+{DBAPI}://{USER}:{PASSWORD}@{ENDPOINT}:{PORT}/{DATABASE}')
 # print(database_url)
 engine = create_engine(database_url, echo=False)
 
