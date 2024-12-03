@@ -17,7 +17,7 @@ ENCODED_PASSWORD = quote_plus(PASSWORD)
 
 #database_url = f'{DATABASE_TYPE}://{USERNAME}:{ENCODED_PASSWORD}@{PUBLIC_IP}:{PORT}/{DB_NAME}'
 # Create a SQLAlchemy engine
-engine = create_engine(f'{DATABASE_TYPE}://{USERNAME}:{ENCODED_PASSWORD}@{PUBLIC_IP}:{PORT}/{DB_NAME}')
+engine = create_engine('postgresql://consultants:WelcomeItc%402022@18.132.73.146:5432/testdb')
 # print(database_url)
 #engine = create_engine(database_url, echo=False)
 
