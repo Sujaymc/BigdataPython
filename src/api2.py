@@ -1,6 +1,5 @@
 import pandas as pd
 from flask import Flask, jsonify
-from urllib.parse import quote_plus
 from sqlalchemy import create_engine, text
 
 # Initialize the Flask application
