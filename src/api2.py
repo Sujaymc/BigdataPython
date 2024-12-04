@@ -23,7 +23,7 @@ engine = create_engine('postgresql://consultants:WelcomeItc%402022@18.132.73.146
 db1 = pd.read_sql("bank", con=engine)
 df =db1.to_dict(orient='records')
 
-@app.route('/', methods=['GET'])
+@app.route('/data', methods=['GET'])
 def get_data():
     data = df
     if data is not None:
