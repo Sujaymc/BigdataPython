@@ -21,3 +21,8 @@ def receive_data():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    #post_Data(data){
+     x = data.username 
+    if
+    }
