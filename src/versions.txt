@@ -1,0 +1,19 @@
+Version Java - 1.8
+Scala 2.12.18
+
+
+USERNAME = "consultants" for cloudera "C"
+PASSWORD = "WelcomeItc@2022"
+
+AWS server
+13.40.76.180
+user:ec2-user
+ssh -i "test_key.pem" ec2-user@13.40.76.180
+
+icacls "D:\AWS\test_key.pem" /inheritance:r /grant:r "${env:USERNAME}:(R)"
+
+list all files in Hadoop : hdfs dfs -ls /
+
+tree in hdfs : hdfs dfs -ls -R
+
+to view inside the file :  hdfs dfs -cat "Path"

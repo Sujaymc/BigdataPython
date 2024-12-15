@@ -1,0 +1,13 @@
+1: Go to the directory of mapper with mapper.py and reducer.py
+2: chmod +x mapper.py ,chmod +x reducer.py
+2: cat ../maper.csv | python3 mapper2.py | sort | python3 reducer2.py
+
+Note: CSV file format!! with commas.
+
+
+hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-streaming.jar \
+ -files mapper.py,reducer.py \
+ -mapper "/usr/bin/python3 mapper2.py" \
+ -reducer "/usr/bin/python3 reducer2.py" \
+ -input /tmp/bigdata_nov_2024/sujay/maper.csv \
+ -output /tmp/bigdata_nov_2024/sujay/output14

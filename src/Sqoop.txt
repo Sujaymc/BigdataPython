@@ -1,0 +1,24 @@
+get ip from Dbbever
+
+sqoop import --connect jdbc:postgresql://18.132.73.146:5432/testdb --username consultants --password WelcomeItc@2022 --table person --m 1 --target-dir /tmp/bigdata_nov_2024/sujay
+
+
+
+sqoop list-tables --connect jdbc:postgresql://18.132.73.146/testdb --username consultants --password WelcomeItc@2022
+
+
+
+CREATE EXTERNAL TABLE sujay.person1 (                     
+  name string,
+age string,
+gender string,
+city string,
+country string,
+has_pet string,
+id int
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','  
+LINES TERMINATED BY '\n'  
+STORED AS TEXTFILE
+LOCATION '/tmp/bigdata_nov_2024/sujay/';

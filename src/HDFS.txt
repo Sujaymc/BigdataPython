@@ -1,0 +1,35 @@
+Creating directory in HDFS: hdfs dfs -mkdir /tmp/bigdata_nov_2024
+moving file to Hadoop : hdfs dfs -put file.txt /tmp/bigdata_nov_2024/sujay
+
+
+
+sudo -u hdfs hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar wordcount /tmp/bigdata_nov_2024/sujay/mapper.csv /tmp/bigdata_nov_2024/sujay/csv_maper
+
+
+hadoop jar /opt/cloudera/parcels/CDH/lib/hadoop-mapreduce/hadoop-streaming.jar \
+ -files mapper.py,reducer.py \
+ -mapper "/usr/bin/python3 mapper.py" \
+ -reducer "/usr/bin/python3 reducer.py" \
+ -input /tmp/bigdata_nov_2024/sujay/example.txt \
+ -output /tmp/bigdata_nov_2024/sujay/output12
+
+Go to: hdfs dfs -ls  /tmp/bigdata_nov_2024/sujay  to see the file created
+
+
+[ec2-user@ip-172-31-13-101 smc_test]$ hdfs dfs -ls  /tmp/bigdata_nov_2024/sujay                                                                               Found 6 items
+drwxr-xr-x   - hdfs     hadoop          0 2024-12-06 12:21 /tmp/bigdata_nov_2024/sujay/count
+drwxr-xr-x   - hdfs     hadoop          0 2024-12-11 10:23 /tmp/bigdata_nov_2024/sujay/csv_maper
+-rw-r--r--   3 ec2-user hadoop        874 2024-12-06 11:53 /tmp/bigdata_nov_2024/sujay/example.txt
+-rw-r--r--   3 ec2-user hadoop        123 2024-12-11 10:14 /tmp/bigdata_nov_2024/sujay/maper.csv
+drwxr-xr-x   - ec2-user hadoop          0 2024-12-09 10:50 /tmp/bigdata_nov_2024/sujay/output12
+drwxr-xr-x   - ec2-user hadoop          0 2024-12-11 09:41 /tmp/bigdata_nov_2024/sujay/output13
+[ec2-user@ip-172-31-13-101 smc_test]$ hdfs dfs -ls  /tmp/bigdata_nov_2024/sujay/csv_maper
+Found 3 items
+-rw-r--r--   3 hdfs hadoop          0 2024-12-11 10:23 /tmp/bigdata_nov_2024/sujay/csv_maper/_SUCCESS
+-rw-r--r--   3 hdfs hadoop         66 2024-12-11 10:23 /tmp/bigdata_nov_2024/sujay/csv_maper/part-r-00000
+-rw-r--r--   3 hdfs hadoop         67 2024-12-11 10:23 /tmp/bigdata_nov_2024/sujay/csv_maper/part-r-00001
+[ec2-user@ip-172-31-13-101 smc_test]$ hdfs dfs -cat  /tmp/bigdata_nov_2024/sujay/csv_maper/part-r-00000
+2,Jane,Electronics,150  1
+3,John,Books,300        1
+4,Jane,Clothing,100     1
+[ec2-user@ip-172-31-13-101 smc_test]$ ^C
